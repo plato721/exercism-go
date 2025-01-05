@@ -1,8 +1,17 @@
 package purchase
 
+var licenseRequiredVehicles = [2]string{"car", "truck"}
+
 // NeedsLicense determines whether a license is needed to drive a type of vehicle. Only "car" and "truck" require a license.
 func NeedsLicense(kind string) bool {
-	panic("NeedsLicense not implemented")
+	licenseRequired := false
+	for i := 0; i < len(licenseRequiredVehicles); i++ {
+		if kind == licenseRequiredVehicles[i] {
+			licenseRequired = true
+			break
+		}
+	}
+	return licenseRequired
 }
 
 // ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in lexicographical order.
