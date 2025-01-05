@@ -1,5 +1,7 @@
 package purchase
 
+import "fmt"
+
 var licenseRequiredVehicles = [2]string{"car", "truck"}
 
 // NeedsLicense determines whether a license is needed to drive a type of vehicle. Only "car" and "truck" require a license.
@@ -16,7 +18,16 @@ func NeedsLicense(kind string) bool {
 
 // ChooseVehicle recommends a vehicle for selection. It always recommends the vehicle that comes first in lexicographical order.
 func ChooseVehicle(option1, option2 string) string {
-	panic("ChooseVehicle not implemented")
+	suffix := "is clearly the better choice."
+	var betterChoice string
+
+	if option1 < option2 {
+		betterChoice = option1
+	} else {
+		betterChoice = option2
+	}
+
+	return fmt.Sprint(betterChoice, " ", suffix)
 }
 
 // CalculateResellPrice calculates how much a vehicle can resell for at a certain age.
