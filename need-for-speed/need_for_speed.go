@@ -1,17 +1,34 @@
 package speed
 
 // TODO: define the 'Car' type struct
+type Car struct {
+	battery      int
+	batteryDrain int
+	speed        int
+	distance     int
+}
+
+type Track struct {
+	distance int
+}
 
 // NewCar creates a new remote controlled car with full battery and given specifications.
 func NewCar(speed, batteryDrain int) Car {
-	panic("Please implement the NewCar function")
+	return Car{
+		batteryDrain: batteryDrain,
+		speed:        speed,
+		battery:      100,
+		distance:     0,
+	}
 }
 
 // TODO: define the 'Track' type struct
 
 // NewTrack creates a new track
 func NewTrack(distance int) Track {
-	panic("Please implement the NewTrack function")
+	return Track{
+		distance: distance,
+	}
 }
 
 // Drive drives the car one time. If there is not enough battery to drive one more time,
