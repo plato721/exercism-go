@@ -45,5 +45,5 @@ func Drive(car Car) Car {
 func CanFinish(car Car, track Track) bool {
 	batteryDischarges := (track.distance - car.distance) / car.speed
 	batteryRequired := car.batteryDrain * batteryDischarges
-	return (car.battery - batteryRequired) >= 0
+	return car.battery >= batteryRequired
 }
