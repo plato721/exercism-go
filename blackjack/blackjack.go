@@ -5,13 +5,7 @@ func ParseCard(card string) int {
 	switch card {
 	case "ace":
 		return 11
-	case "king":
-		return 10
-	case "queen":
-		return 10
-	case "jack":
-		return 10
-	case "ten":
+	case "king", "queen", "jack", "ten":
 		return 10
 	case "nine":
 		return 9
@@ -40,10 +34,10 @@ func FirstTurn(card1, card2, dealerCard string) string {
 	dealerCardVal := ParseCard(dealerCard)
 
 	switch {
-	case sumHand == 21 && dealerCardVal < 10:
-		return "W"
 	case sumHand == 22:
 		return "P"
+	case sumHand == 21 && dealerCardVal < 10:
+		return "W"
 	case sumHand >= 17:
 		return "S"
 	case sumHand >= 12 && dealerCardVal <= 6:
