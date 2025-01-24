@@ -33,22 +33,25 @@ func ParseCard(card string) int {
 	return 0
 }
 
-func sumCards(card1, card2 string) int {
-	return ParseCard(card1) + ParseCard(card2)
-}
-
 // FirstTurn returns the decision for the first turn, given two cards of the
 // player and one card of the dealer.
 func FirstTurn(card1, card2, dealerCard string) string {
+	sumHand := sumCards(card1, card2)
+	dealerCardVal := ParseCard(dealerCard)
+
 	switch {
-	case sumCards(card1, card2) == 21 && ParseCard(dealerCard) < 10:
+	case sumHand == 21 && dealerCardVal < 10:
 		return "W"
-	case sumCards(card1, card2) == 22:
+	case sumHand == 22:
 		return "P"
-	case sumCards(card1, card2) >= 17:
+	case sumHand >= 17:
 		return "S"
-	case sumCards(card1, card2) >= 12 && ParseCard(dealerCard) <= 6:
+	case sumHand >= 12 && dealerCardVal <= 6:
 		return "S"
 	}
 	return "H"
+}
+
+func sumCards(card1, card2 string) int {
+	return ParseCard(card1) + ParseCard(card2)
 }
